@@ -75,6 +75,14 @@ class PaginationKeyboard:
         return pagination_builder
 
     def get_keyboard_or_builder(self, builder: bool = False):
+        """Получаем клавиатуру или билдер с пагинацией.
+        Клавиатура - по умолчанию, билдер - для встраивания в клавиатуру и,
+        например, взаимодействия с кнопкой "Назад" из билдера
+
+        Args:
+            builder (bool, optional): Билдер-не билдер. Defaults to False.
+
+        """
         items_builder = self.get_items_builder()
         pagination_builder = self.get_navigation_builder()
         if pagination_builder:
