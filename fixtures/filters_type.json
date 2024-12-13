@@ -1,0 +1,18 @@
+[
+    {
+        "model": "news.NewsType",
+        "pk": 1,
+        "fields": {
+            "name": "Все новости",
+            "param_value": "0"
+        }
+    },
+    {
+        "model": "news.NewsType",
+        "pk": 2,
+        "fields": {
+            "name": "Только важные",
+            "param_value": "1"
+        }
+    }
+]

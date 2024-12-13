@@ -1,5 +1,7 @@
 from django.db import models
 
+TG_URL = "https://t.me/"
+
 
 class MediaType(models.TextChoices):
     PHOTO = "photo", "Фото"

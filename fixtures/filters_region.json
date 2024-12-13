@@ -1,0 +1,66 @@
+[
+    {
+        "model": "news.Region",
+        "pk": 1,
+        "fields": {
+            "name": "Азия (искл. Японию)",
+            "param_value": "3"
+        }
+    },
+    {
+        "model": "news.Region",
+        "pk": 2,
+        "fields": {
+            "name": "Африка",
+            "param_value": "6"
+        }
+    },
+    {
+        "model": "news.Region",
+        "pk": 3,
+        "fields": {
+            "name": "Ближний Восток",
+            "param_value": "5"
+        }
+    },
+    {
+        "model": "news.Region",
+        "pk": 4,
+        "fields": {
+            "name": "Восточная Европа",
+            "param_value": "2"
+        }
+    },
+    {
+        "model": "news.Region",
+        "pk": 5,
+        "fields": {
+            "name": "Западная Европа",
+            "param_value": "11"
+        }
+    },
+    {
+        "model": "news.Region",
+        "pk": 6,
+        "fields": {
+            "name": "Латинская Америка",
+            "param_value": "4"
+        }
+    },
+    {
+        "model": "news.Region",
+        "pk": 7,
+        "fields": {
+            "name": "Развитые рынки (искл. Европу)",
+            "param_value": "7"
+        }
+    },
+    {
+        "model": "news.Region",
+        "pk": 8,
+        "fields": {
+            "name": "СНГ",
+            "param_value": "1"
+        }
+    }
+]

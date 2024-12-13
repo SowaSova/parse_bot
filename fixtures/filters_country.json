@@ -1,0 +1,1546 @@
+[
+    {
+        "model": "news.Country",
+        "pk": 1,
+        "fields": {
+            "name": "Россия",
+            "param_value": "1"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 2,
+        "fields": {
+            "name": "Австралия",
+            "param_value": "64"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 3,
+        "fields": {
+            "name": "Австрия",
+            "param_value": "65"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 4,
+        "fields": {
+            "name": "Азербайджан",
+            "param_value": "66"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 5,
+        "fields": {
+            "name": "Албания",
+            "param_value": "155"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 6,
+        "fields": {
+            "name": "Алжир",
+            "param_value": "58"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 7,
+        "fields": {
+            "name": "Ангола",
+            "param_value": "169"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 8,
+        "fields": {
+            "name": "Андорра",
+            "param_value": "63"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 9,
+        "fields": {
+            "name": "Антигуа и Барбуда",
+            "param_value": "207"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 10,
+        "fields": {
+            "name": "Аргентина",
+            "param_value": "5"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 11,
+        "fields": {
+            "name": "Армения",
+            "param_value": "134"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 12,
+        "fields": {
+            "name": "Аруба",
+            "param_value": "36"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 13,
+        "fields": {
+            "name": "Афганистан",
+            "param_value": "245"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 14,
+        "fields": {
+            "name": "Багамские острова",
+            "param_value": "59"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 15,
+        "fields": {
+            "name": "Бангладеш",
+            "param_value": "166"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 16,
+        "fields": {
+            "name": "Барбадос",
+            "param_value": "37"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 17,
+        "fields": {
+            "name": "Бахрейн",
+            "param_value": "67"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 18,
+        "fields": {
+            "name": "Беларусь",
+            "param_value": "73"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 19,
+        "fields": {
+            "name": "Белиз",
+            "param_value": "69"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 20,
+        "fields": {
+            "name": "Бельгия",
+            "param_value": "74"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 21,
+        "fields": {
+            "name": "Бенин",
+            "param_value": "70"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 22,
+        "fields": {
+            "name": "Бермудские острова",
+            "param_value": "75"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 23,
+        "fields": {
+            "name": "Болгария",
+            "param_value": "6"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 24,
+        "fields": {
+            "name": "Боливия",
+            "param_value": "60"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 25,
+        "fields": {
+            "name": "Босния и Герцеговина",
+            "param_value": "133"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 26,
+        "fields": {
+            "name": "Ботсвана",
+            "param_value": "76"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 27,
+        "fields": {
+            "name": "Бразилия",
+            "param_value": "7"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 28,
+        "fields": {
+            "name": "Бруней",
+            "param_value": "251"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 29,
+        "fields": {
+            "name": "Буркина-Фасо",
+            "param_value": "145"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 30,
+        "fields": {
+            "name": "Бурунди",
+            "param_value": "174"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 31,
+        "fields": {
+            "name": "Бутан",
+            "param_value": "219"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 32,
+        "fields": {
+            "name": "Великобритания",
+            "param_value": "71"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 33,
+        "fields": {
+            "name": "Венгрия",
+            "param_value": "8"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 34,
+        "fields": {
+            "name": "Венесуэла",
+            "param_value": "9"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 35,
+        "fields": {
+            "name": "Виргинские острова (Брит.)",
+            "param_value": "170"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 36,
+        "fields": {
+            "name": "Виргинские острова (США)",
+            "param_value": "175"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 37,
+        "fields": {
+            "name": "Вьетнам",
+            "param_value": "57"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 38,
+        "fields": {
+            "name": "Габон",
+            "param_value": "156"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 39,
+        "fields": {
+            "name": "Гамбия",
+            "param_value": "86"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 40,
+        "fields": {
+            "name": "Гана",
+            "param_value": "88"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 41,
+        "fields": {
+            "name": "Гватемала",
+            "param_value": "48"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 42,
+        "fields": {
+            "name": "Гвинея-Бисау",
+            "param_value": "215"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 43,
+        "fields": {
+            "name": "Германия",
+            "param_value": "87"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 44,
+        "fields": {
+            "name": "Гернси",
+            "param_value": "168"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 45,
+        "fields": {
+            "name": "Гондурас",
+            "param_value": "90"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 46,
+        "fields": {
+            "name": "Гонконг",
+            "param_value": "49"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 47,
+        "fields": {
+            "name": "Гренада",
+            "param_value": "89"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 48,
+        "fields": {
+            "name": "Греция",
+            "param_value": "47"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 49,
+        "fields": {
+            "name": "Грузия",
+            "param_value": "138"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 50,
+        "fields": {
+            "name": "Дания",
+            "param_value": "82"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 51,
+        "fields": {
+            "name": "Демократическая Республика Конго",
+            "param_value": "243"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 52,
+        "fields": {
+            "name": "Джерси",
+            "param_value": "179"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 53,
+        "fields": {
+            "name": "Доминика",
+            "param_value": "211"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 54,
+        "fields": {
+            "name": "Доминиканская Республика",
+            "param_value": "45"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 55,
+        "fields": {
+            "name": "Египет",
+            "param_value": "10"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 56,
+        "fields": {
+            "name": "Замбия",
+            "param_value": "173"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 57,
+        "fields": {
+            "name": "Зимбабве",
+            "param_value": "227"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 58,
+        "fields": {
+            "name": "Израиль",
+            "param_value": "94"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 59,
+        "fields": {
+            "name": "Индия",
+            "param_value": "41"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 60,
+        "fields": {
+            "name": "Индонезия",
+            "param_value": "11"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 61,
+        "fields": {
+            "name": "Иордания",
+            "param_value": "51"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 62,
+        "fields": {
+            "name": "Ирак",
+            "param_value": "161"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 63,
+        "fields": {
+            "name": "Иран",
+            "param_value": "92"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 64,
+        "fields": {
+            "name": "Ирландия",
+            "param_value": "93"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 65,
+        "fields": {
+            "name": "Исландия",
+            "param_value": "91"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 66,
+        "fields": {
+            "name": "Испания",
+            "param_value": "119"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 67,
+        "fields": {
+            "name": "Италия",
+            "param_value": "95"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 68,
+        "fields": {
+            "name": "Йемен",
+            "param_value": "12"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 69,
+        "fields": {
+            "name": "Кабо Верде",
+            "param_value": "144"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 70,
+        "fields": {
+            "name": "Казахстан",
+            "param_value": "4"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 71,
+        "fields": {
+            "name": "Каймановы острова",
+            "param_value": "79"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 72,
+        "fields": {
+            "name": "Камбоджа",
+            "param_value": "154"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 73,
+        "fields": {
+            "name": "Камерун",
+            "param_value": "77"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 74,
+        "fields": {
+            "name": "Канада",
+            "param_value": "78"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 75,
+        "fields": {
+            "name": "Катар",
+            "param_value": "14"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 76,
+        "fields": {
+            "name": "Кения",
+            "param_value": "151"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 77,
+        "fields": {
+            "name": "Кипр",
+            "param_value": "81"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 78,
+        "fields": {
+            "name": "Китай",
+            "param_value": "15"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 79,
+        "fields": {
+            "name": "Колумбия",
+            "param_value": "16"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 80,
+        "fields": {
+            "name": "Конго",
+            "param_value": "163"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 81,
+        "fields": {
+            "name": "Косово",
+            "param_value": "197"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 82,
+        "fields": {
+            "name": "Коста-Рика",
+            "param_value": "42"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 83,
+        "fields": {
+            "name": "Кот д`Ивуар",
+            "param_value": "43"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 84,
+        "fields": {
+            "name": "Куба",
+            "param_value": "61"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 85,
+        "fields": {
+            "name": "Кувейт",
+            "param_value": "97"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 86,
+        "fields": {
+            "name": "Курасао",
+            "param_value": "185"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 87,
+        "fields": {
+            "name": "Кыргызстан",
+            "param_value": "132"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 88,
+        "fields": {
+            "name": "Лаос",
+            "param_value": "217"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 89,
+        "fields": {
+            "name": "Латвия",
+            "param_value": "18"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 90,
+        "fields": {
+            "name": "Лесото",
+            "param_value": "98"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 91,
+        "fields": {
+            "name": "Ливан",
+            "param_value": "19"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 92,
+        "fields": {
+            "name": "Ливия",
+            "param_value": "164"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 93,
+        "fields": {
+            "name": "Литва",
+            "param_value": "20"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 94,
+        "fields": {
+            "name": "Лихтенштейн",
+            "param_value": "99"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 95,
+        "fields": {
+            "name": "Люксембург",
+            "param_value": "100"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 96,
+        "fields": {
+            "name": "Маврикий",
+            "param_value": "104"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 97,
+        "fields": {
+            "name": "Мадагаскар",
+            "param_value": "147"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 98,
+        "fields": {
+            "name": "Макао",
+            "param_value": "101"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 99,
+        "fields": {
+            "name": "Малави",
+            "param_value": "102"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 100,
+        "fields": {
+            "name": "Малайзия",
+            "param_value": "21"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 101,
+        "fields": {
+            "name": "Мали",
+            "param_value": "139"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 102,
+        "fields": {
+            "name": "Мальдивы",
+            "param_value": "241"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 103,
+        "fields": {
+            "name": "Мальта",
+            "param_value": "103"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 104,
+        "fields": {
+            "name": "Марокко",
+            "param_value": "53"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 105,
+        "fields": {
+            "name": "Маршалловы Острова",
+            "param_value": "249"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 106,
+        "fields": {
+            "name": "Мексика",
+            "param_value": "22"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 107,
+        "fields": {
+            "name": "Мозамбик",
+            "param_value": "107"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 108,
+        "fields": {
+            "name": "Молдова",
+            "param_value": "105"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 109,
+        "fields": {
+            "name": "Монако",
+            "param_value": "150"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 110,
+        "fields": {
+            "name": "Монголия",
+            "param_value": "106"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 111,
+        "fields": {
+            "name": "Монтсеррат",
+            "param_value": "149"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 112,
+        "fields": {
+            "name": "Мьянма",
+            "param_value": "221"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 113,
+        "fields": {
+            "name": "Намибия",
+            "param_value": "143"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 114,
+        "fields": {
+            "name": "Непал",
+            "param_value": "223"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 115,
+        "fields": {
+            "name": "Нигер",
+            "param_value": "136"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 116,
+        "fields": {
+            "name": "Нигерия",
+            "param_value": "54"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 117,
+        "fields": {
+            "name": "Нидерланды",
+            "param_value": "108"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 118,
+        "fields": {
+            "name": "Никарагуа",
+            "param_value": "110"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 119,
+        "fields": {
+            "name": "Ниуэ",
+            "param_value": "235"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 120,
+        "fields": {
+            "name": "Новая Зеландия",
+            "param_value": "109"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 121,
+        "fields": {
+            "name": "Норвегия",
+            "param_value": "111"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 122,
+        "fields": {
+            "name": "Объединенные Арабские Эмираты",
+            "param_value": "126"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 123,
+        "fields": {
+            "name": "Оман",
+            "param_value": "112"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 124,
+        "fields": {
+            "name": "Остров Мэн",
+            "param_value": "146"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 125,
+        "fields": {
+            "name": "Острова Кука",
+            "param_value": "80"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 126,
+        "fields": {
+            "name": "Пакистан",
+            "param_value": "55"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 127,
+        "fields": {
+            "name": "Палау",
+            "param_value": "239"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 128,
+        "fields": {
+            "name": "Панама",
+            "param_value": "23"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 129,
+        "fields": {
+            "name": "Папуа Новая Гвинея",
+            "param_value": "113"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 130,
+        "fields": {
+            "name": "Парагвай",
+            "param_value": "114"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 131,
+        "fields": {
+            "name": "Перу",
+            "param_value": "56"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 132,
+        "fields": {
+            "name": "Польша",
+            "param_value": "24"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 133,
+        "fields": {
+            "name": "Португалия",
+            "param_value": "115"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 134,
+        "fields": {
+            "name": "Пуэрто-Рико",
+            "param_value": "172"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 135,
+        "fields": {
+            "name": "Республика Корея",
+            "param_value": "17"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 136,
+        "fields": {
+            "name": "Руанда",
+            "param_value": "153"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 137,
+        "fields": {
+            "name": "Румыния",
+            "param_value": "25"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 138,
+        "fields": {
+            "name": "США",
+            "param_value": "128"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 139,
+        "fields": {
+            "name": "Сальвадор",
+            "param_value": "62"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 140,
+        "fields": {
+            "name": "Самоа",
+            "param_value": "233"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 141,
+        "fields": {
+            "name": "Сан-Марино",
+            "param_value": "116"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 142,
+        "fields": {
+            "name": "Саудовская Аравия",
+            "param_value": "117"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 143,
+        "fields": {
+            "name": "Северная Корея",
+            "param_value": "177"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 144,
+        "fields": {
+            "name": "Северная Македония",
+            "param_value": "141"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 145,
+        "fields": {
+            "name": "Сейшельские Острова",
+            "param_value": "152"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 146,
+        "fields": {
+            "name": "Сенегал",
+            "param_value": "118"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 147,
+        "fields": {
+            "name": "Сент-Винсент и Гренадины",
+            "param_value": "165"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 148,
+        "fields": {
+            "name": "Сент-Китс (Кристофер) и Невис",
+            "param_value": "213"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 149,
+        "fields": {
+            "name": "Сент-Люсия",
+            "param_value": "209"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 150,
+        "fields": {
+            "name": "Сербия",
+            "param_value": "137"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 151,
+        "fields": {
+            "name": "Сингапур",
+            "param_value": "40"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 152,
+        "fields": {
+            "name": "Словакия",
+            "param_value": "26"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 153,
+        "fields": {
+            "name": "Словения",
+            "param_value": "27"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 154,
+        "fields": {
+            "name": "Соломоновы острова",
+            "param_value": "255"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 155,
+        "fields": {
+            "name": "Сомали",
+            "param_value": "225"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 156,
+        "fields": {
+            "name": "Судан",
+            "param_value": "191"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 157,
+        "fields": {
+            "name": "Суринам",
+            "param_value": "120"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 158,
+        "fields": {
+            "name": "Сьерра-Леоне",
+            "param_value": "229"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 159,
+        "fields": {
+            "name": "Таджикистан",
+            "param_value": "135"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 160,
+        "fields": {
+            "name": "Таиланд",
+            "param_value": "28"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 161,
+        "fields": {
+            "name": "Тайвань",
+            "param_value": "39"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 162,
+        "fields": {
+            "name": "Танзания",
+            "param_value": "187"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 163,
+        "fields": {
+            "name": "Того",
+            "param_value": "203"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 164,
+        "fields": {
+            "name": "Тринидад и Тобаго",
+            "param_value": "123"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 165,
+        "fields": {
+            "name": "Тувалу",
+            "param_value": "237"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 166,
+        "fields": {
+            "name": "Тунис",
+            "param_value": "124"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 167,
+        "fields": {
+            "name": "Туркменистан",
+            "param_value": "125"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 168,
+        "fields": {
+            "name": "Турция",
+            "param_value": "29"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 169,
+        "fields": {
+            "name": "Уганда",
+            "param_value": "140"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 170,
+        "fields": {
+            "name": "Узбекистан",
+            "param_value": "130"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 171,
+        "fields": {
+            "name": "Уругвай",
+            "param_value": "31"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 172,
+        "fields": {
+            "name": "Федеративные Штаты Микронезии",
+            "param_value": "195"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 173,
+        "fields": {
+            "name": "Фиджи",
+            "param_value": "84"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 174,
+        "fields": {
+            "name": "Филиппины",
+            "param_value": "32"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 175,
+        "fields": {
+            "name": "Финляндия",
+            "param_value": "129"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 176,
+        "fields": {
+            "name": "Фолклендские острова",
+            "param_value": "247"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 177,
+        "fields": {
+            "name": "Франция",
+            "param_value": "85"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 178,
+        "fields": {
+            "name": "Хорватия",
+            "param_value": "33"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 179,
+        "fields": {
+            "name": "Чад",
+            "param_value": "199"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 180,
+        "fields": {
+            "name": "Черногория",
+            "param_value": "148"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 181,
+        "fields": {
+            "name": "Чехия",
+            "param_value": "44"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 182,
+        "fields": {
+            "name": "Чили",
+            "param_value": "34"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 183,
+        "fields": {
+            "name": "Швейцария",
+            "param_value": "122"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 184,
+        "fields": {
+            "name": "Швеция",
+            "param_value": "121"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 185,
+        "fields": {
+            "name": "Шри-Ланка",
+            "param_value": "142"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 186,
+        "fields": {
+            "name": "Эквадор",
+            "param_value": "46"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 187,
+        "fields": {
+            "name": "Эсватини",
+            "param_value": "231"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 188,
+        "fields": {
+            "name": "Эстония",
+            "param_value": "83"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 189,
+        "fields": {
+            "name": "Эфиопия",
+            "param_value": "189"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 190,
+        "fields": {
+            "name": "ЮАР",
+            "param_value": "35"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 191,
+        "fields": {
+            "name": "Южный Судан",
+            "param_value": "193"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 192,
+        "fields": {
+            "name": "Ямайка",
+            "param_value": "50"
+        }
+    },
+    {
+        "model": "news.Country",
+        "pk": 193,
+        "fields": {
+            "name": "Япония",
+            "param_value": "96"
+        }
+    }
+]

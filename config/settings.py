@@ -14,6 +14,7 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 
 
 DEBUG = os.getenv("DEBUG")
+BOT_TOKEN = os.getenv("BOT_TOKEN")
 
 ALLOWED_HOSTS = [
     "127.0.0.1",
@@ -34,6 +35,9 @@ INSTALLED_APPS = [
     "apps.users",
     "apps.bot",
     "apps.broadcast",
+    "apps.news",
+    "apps.products",
+    "apps.lottery",
     "tg_bot",
 ]
 

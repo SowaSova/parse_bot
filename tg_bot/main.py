@@ -6,7 +6,7 @@ from aiogram.client.default import DefaultBotProperties
 from aiogram.enums.parse_mode import ParseMode
 from django.conf import settings
 
-from tg_bot.core.logger import configure_logger, setup_logging
+from tg_bot.core.logger import configure_logger
 from tg_bot.domain.handlers import register_handlers
 
 

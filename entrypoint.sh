@@ -8,8 +8,8 @@ python manage.py migrate
 echo "Сбор статических файлов..."
 python manage.py collectstatic --noinput
 
-# echo "Загрузка начальных данных..."
-# python manage.py loaddata fixtures/init_db.json
+echo "Загрузка начальных данных..."
+python manage.py loaddata fixtures/db.json
 
 
 exec "$@"

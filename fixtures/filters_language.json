@@ -1,0 +1,66 @@
+[
+    {
+        "model": "news.Language",
+        "pk": 1,
+        "fields": {
+            "name": "Английский",
+            "param_value": "eng"
+        }
+    },
+    {
+        "model": "news.Language",
+        "pk": 2,
+        "fields": {
+            "name": "Испанский",
+            "param_value": "esp"
+        }
+    },
+    {
+        "model": "news.Language",
+        "pk": 3,
+        "fields": {
+            "name": "Итальянский",
+            "param_value": "ita"
+        }
+    },
+    {
+        "model": "news.Language",
+        "pk": 4,
+        "fields": {
+            "name": "Китайский",
+            "param_value": "chn"
+        }
+    },
+    {
+        "model": "news.Language",
+        "pk": 5,
+        "fields": {
+            "name": "Немецкий",
+            "param_value": "deu"
+        }
+    },
+    {
+        "model": "news.Language",
+        "pk": 6,
+        "fields": {
+            "name": "Польский",
+            "param_value": "pol"
+        }
+    },
+    {
+        "model": "news.Language",
+        "pk": 7,
+        "fields": {
+            "name": "Русский",
+            "param_value": "rus"
+        }
+    },
+    {
+        "model": "news.Language",
+        "pk": 8,
+        "fields": {
+            "name": "Французский",
+            "param_value": "fra"
+        }
+    }
+]

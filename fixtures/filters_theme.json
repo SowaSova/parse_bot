@@ -1,0 +1,234 @@
+[
+    {
+        "model": "news.NewsTheme",
+        "pk": 1,
+        "fields": {
+            "name": "Еврооблигации",
+            "param_value": "3"
+        }
+    },
+    {
+        "model": "news.NewsTheme",
+        "pk": 2,
+        "fields": {
+            "name": "Государственные облигации",
+            "param_value": "5"
+        }
+    },
+    {
+        "model": "news.NewsTheme",
+        "pk": 3,
+        "fields": {
+            "name": "Корпоративные облигации",
+            "param_value": "1"
+        }
+    },
+    {
+        "model": "news.NewsTheme",
+        "pk": 4,
+        "fields": {
+            "name": "Муниципальные облигации",
+            "param_value": "4"
+        }
+    },
+    {
+        "model": "news.NewsTheme",
+        "pk": 5,
+        "fields": {
+            "name": "Планируемые эмиссии",
+            "param_value": "15"
+        }
+    },
+    {
+        "model": "news.NewsTheme",
+        "pk": 6,
+        "fields": {
+            "name": "Выкупы и оферты",
+            "param_value": "17"
+        }
+    },
+    {
+        "model": "news.NewsTheme",
+        "pk": 7,
+        "fields": {
+            "name": "Дефолты и реструктуризации",
+            "param_value": "12"
+        }
+    },
+    {
+        "model": "news.NewsTheme",
+        "pk": 8,
+        "fields": {
+            "name": "Процентные ставки",
+            "param_value": "6"
+        }
+    },
+    {
+        "model": "news.NewsTheme",
+        "pk": 9,
+        "fields": {
+            "name": "Секьюритизация",
+            "param_value": "23"
+        }
+    },
+    {
+        "model": "news.NewsTheme",
+        "pk": 10,
+        "fields": {
+            "name": "Макроэкономика",
+            "param_value": "14"
+        }
+    },
+    {
+        "model": "news.NewsTheme",
+        "pk": 11,
+        "fields": {
+            "name": "Отчетность",
+            "param_value": "21"
+        }
+    },
+    {
+        "model": "news.NewsTheme",
+        "pk": 12,
+        "fields": {
+            "name": "Суверенные рейтинги",
+            "param_value": "31"
+        }
+    },
+    {
+        "model": "news.NewsTheme",
+        "pk": 13,
+        "fields": {
+            "name": "Корпоративные и муниципальные рейтинги",
+            "param_value": "33"
+        }
+    },
+    {
+        "model": "news.NewsTheme",
+        "pk": 14,
+        "fields": {
+            "name": "Денежный рынок",
+            "param_value": "13"
+        }
+    },
+    {
+        "model": "news.NewsTheme",
+        "pk": 15,
+        "fields": {
+            "name": "Новости компаний",
+            "param_value": "25"
+        }
+    },
+    {
+        "model": "news.NewsTheme",
+        "pk": 16,
+        "fields": {
+            "name": "Разное",
+            "param_value": "8"
+        }
+    },
+    {
+        "model": "news.NewsTheme",
+        "pk": 17,
+        "fields": {
+            "name": "Акции",
+            "param_value": "37"
+        }
+    },
+    {
+        "model": "news.NewsTheme",
+        "pk": 18,
+        "fields": {
+            "name": "Фонды",
+            "param_value": "39"
+        }
+    },
+    {
+        "model": "news.NewsTheme",
+        "pk": 19,
+        "fields": {
+            "name": "Cbonds API",
+            "param_value": "41"
+        }
+    },
+    {
+        "model": "news.NewsTheme",
+        "pk": 20,
+        "fields": {
+            "name": "Товары",
+            "param_value": "42"
+        }
+    },
+    {
+        "model": "news.NewsTheme",
+        "pk": 21,
+        "fields": {
+            "name": "ЦФА",
+            "param_value": "43"
+        }
+    },
+    {
+        "model": "news.NewsTheme",
+        "pk": 22,
+        "fields": {
+            "name": "Сукук",
+            "param_value": "45"
+        }
+    },
+    {
+        "model": "news.NewsTheme",
+        "pk": 23,
+        "fields": {
+            "name": "ESG",
+            "param_value": "47"
+        }
+    },
+    {
+        "model": "news.NewsTheme",
+        "pk": 24,
+        "fields": {
+            "name": "IPO / SPO",
+            "param_value": "49"
+        }
+    },
+    {
+        "model": "news.NewsTheme",
+        "pk": 25,
+        "fields": {
+            "name": "Биржевые сообщения",
+            "param_value": "51"
+        }
+    },
+    {
+        "model": "news.NewsTheme",
+        "pk": 26,
+        "fields": {
+            "name": "Золото",
+            "param_value": "53"
+        }
+    },
+    {
+        "model": "news.NewsTheme",
+        "pk": 27,
+        "fields": {
+            "name": "Синдицированные кредиты",
+            "param_value": "10"
+        }
+    },
+    {
+        "model": "news.NewsTheme",
+        "pk": 28,
+        "fields": {
+            "name": "Кредиты",
+            "param_value": "11"
+        }
+    },
+    {
+        "model": "news.NewsTheme",
+        "pk": 29,
+        "fields": {
+            "name": "Изменение доли бенефициара компании",
+            "param_value": "35"
+        }
+    }
+]
