@@ -1,7 +1,7 @@
 services:
   web:
     build: .
-    command: uvicorn config.asgi:application --host 0.0.0.0 --port 8000 --forwarded-allow-ips "*" --proxy-headers --workers 4
+    command: daphne config.asgi:application -b 0.0.0.0 -p 8000 
     volumes:
       - ./media:/app/media
 
