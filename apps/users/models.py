@@ -14,6 +14,7 @@ class TelegramUser(models.Model):
     phone_number = models.CharField(
         max_length=20, verbose_name="Номер телефона", null=True
     )
+    registred = models.BooleanField(default=False, verbose_name="Зарегистрирован")
     created_at = models.DateTimeField(
         auto_now_add=True, verbose_name="Дата регистрации"
     )

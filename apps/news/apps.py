@@ -6,3 +6,6 @@ class NewsConfig(AppConfig):
     name = "apps.news"
     verbose_name = "Новость"
     verbose_name_plural = "Новости"
+
+    def ready(self):
+        import apps.news.signals  # noqa

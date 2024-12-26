@@ -8,15 +8,18 @@ from django.conf import settings
 
 from tg_bot.core.logger import configure_logger
 from tg_bot.domain.handlers import register_handlers
+from tg_bot.middlewares.auth import AuthMiddleware
 
 
 async def main() -> None:
-    configure_logger(True)
+    # configure_logger(True)
     bot = Bot(
         token=settings.BOT_TOKEN,
         default=DefaultBotProperties(parse_mode=ParseMode.HTML),
     )
     dp = Dispatcher()
+    dp.update.middleware(AuthMiddleware())
+
     register_handlers(dp)
 
     await dp.start_polling(bot)

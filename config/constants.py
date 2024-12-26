@@ -2,6 +2,8 @@ from django.db import models
 
 TG_URL = "https://t.me/"
 
+NEWS_INTERVAL = 60  # минут
+
 
 class MediaType(models.TextChoices):
     PHOTO = "photo", "Фото"

@@ -8,21 +8,20 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "config.settings")
 
 app = Celery("config")
 
-# Используйте строку для брокера Redis
-app.conf.broker_url = settings.CELERY_BROKER_URL
-app.conf.result_backend = settings.CELERY_RESULT_BACKEND
-
-
-# Настройки временной зоны и т.д.
-app.conf.timezone = settings.TIME_ZONE
+app.config_from_object("django.conf:settings", namespace="CELERY")
 
 # Автоматическое обнаружение задач в ваших приложениях
 app.autodiscover_tasks()
 
+from config.constants import NEWS_INTERVAL
 
 app.conf.beat_schedule = {
-    "send-scheduled-messages-every-minute": {
-        "task": "tg_bot.utils.tasks.send_scheduled_messages",
-        "schedule": timedelta(minutes=1),
+    "parse-news-every-hour": {
+        "task": "apps.news.tasks.parse_news_task",
+        "schedule": timedelta(minutes=NEWS_INTERVAL),  # каждый час
+    },
+    "post-scheduled-news-every-minute": {
+        "task": "apps.news.tasks.post_scheduled_news_task",
+        "schedule": timedelta(minutes=1),  # каждую минуту
     },
 }

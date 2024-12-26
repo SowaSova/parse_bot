@@ -9,12 +9,14 @@ load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 SECRET_KEY = os.getenv("SECRET_KEY")
 
-
 DEBUG = os.getenv("DEBUG")
+
+# BOT
+
 BOT_TOKEN = os.getenv("BOT_TOKEN")
+BOT_USERNAME = os.getenv("BOT_USERNAME")
 
 ALLOWED_HOSTS = [
     "127.0.0.1",
@@ -102,7 +104,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = "ru-RU"
 
-TIME_ZONE = "UTC"
+TIME_ZONE = "Europe/Moscow"
 
 USE_I18N = True
 
@@ -122,29 +124,55 @@ CELERY_RESULT_BACKEND = os.getenv("REDIS_URL")
 CELERY_WORKER_PREFETCH_MULTIPLIER = 1
 CELERY_BROKER_POOL_LIMIT = None
 
-# ADMIN_ORDERING = [
-#     ("users", ["TelegramUser"]),
-#     ("channels", ["Category", "Channel"]),
-#     ("broadcast", ["Broadcast"]),
-#     ("moderation", ["SubscriptionRequest"]),
-#     ("accesses", ["GlobalAccessSettings"]),
-#     ("bot", ["Bot"]),
-# ]
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": os.getenv("REDIS_URL"),  # Адрес Redis-сервера и номер базы
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        },
+        "KEY_PREFIX": "parse",
+    }
+}
+
+SESSION_ENGINE = "django.contrib.sessions.backends.cache"
+SESSION_CACHE_ALIAS = "default"
 
 
-# def get_app_list(self, request):
-#     app_dict = self._build_app_dict(request)
+# CBOUND
+CBONDSSESSID_1 = os.getenv("CBONDSSESSID_1")
+CBONDSSESSID_2 = os.getenv("CBONDSSESSID_2")
+CF_CLEARANCE = os.getenv("cf_clearance")
+CBONDS_TOKEN1 = os.getenv("CBONDS_TOKEN1")
+CBONDS_TOKEN2 = os.getenv("CBONDS_TOKEN2")
+CBONDS_USERNAME = os.getenv("CBONDS_USERNAME")
+CBONDS_PASSWORD = os.getenv("CBONDS_PASSWORD")
+CBONDS_OTP = os.getenv("CBONDS_OTP")
 
-#     app_dict_copy = copy.deepcopy(app_dict)
-#     for app_label, object_list in ADMIN_ORDERING:
-#         app = app_dict_copy.pop(app_label)
-#         object_dict = {value: idx for idx, value in enumerate(object_list)}
-#         app["models"].sort(
-#             key=lambda x: object_dict.get(x["object_name"], len(object_list) + 1)
-#         )
-#         yield app
+# ADMIN ORDER
+ADMIN_ORDERING = [
+    ("users", ["TelegramUser"]),
+    ("news", ["NewsFilter", "NewsChannel"]),
+    ("products", ["Product", "Cart"]),
+    ("lottery", ["Lottery"]),
+    ("broadcast", ["Broadcast"]),
+    ("bot", ["FAQ", "Manager"]),
+]
 
-#     app_list = sorted(app_dict_copy.values(), key=lambda x: x["name"].lower())
-#     for app in app_list:
-#         app["models"].sort(key=lambda x: x["name"])
-#         yield app
+
+def get_app_list(self, request):
+    app_dict = self._build_app_dict(request)
+
+    app_dict_copy = copy.deepcopy(app_dict)
+    for app_label, object_list in ADMIN_ORDERING:
+        app = app_dict_copy.pop(app_label)
+        object_dict = {value: idx for idx, value in enumerate(object_list)}
+        app["models"].sort(
+            key=lambda x: object_dict.get(x["object_name"], len(object_list) + 1)
+        )
+        yield app
+
+    app_list = sorted(app_dict_copy.values(), key=lambda x: x["name"].lower())
+    for app in app_list:
+        app["models"].sort(key=lambda x: x["name"])
+        yield app

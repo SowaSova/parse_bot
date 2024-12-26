@@ -16,7 +16,8 @@ class NewsChannelAdmin(admin.ModelAdmin):
 
 @admin.register(NewsFilter)
 class NewsFilterAdmin(admin.ModelAdmin):
-    list_display = ["id", "created_at"]
+    list_display = ["id", "url", "created_at"]
+    list_editable = ["url"]
 
     def has_add_permission(self, request):
         if NewsFilter.objects.count() > 0:

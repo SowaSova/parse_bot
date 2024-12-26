@@ -1,3 +1,4 @@
+from django.core.exceptions import ValidationError
 from django.db import models
 
 from .utils import product_image_path
@@ -6,9 +7,11 @@ from .utils import product_image_path
 class Product(models.Model):
     title = models.CharField(max_length=255, verbose_name="Название продукта")
     description = models.TextField(
-        verbose_name="Описание продукта", null=True, blank=True
+        verbose_name="Описание продукта",
+        null=True,
+        blank=True,
     )
-    photo = models.ImageField(
+    image = models.ImageField(
         upload_to=product_image_path,
         verbose_name="Фото продукта",
         null=True,
@@ -22,6 +25,26 @@ class Product(models.Model):
 
     def __str__(self):
         return self.title
+
+    def clean(self):
+        super().clean()
+        desc_len = len(self.description or "")
+        if self.image:
+            # Если фото есть, ограничение 1024 символа
+            if desc_len > 860:
+                raise ValidationError(
+                    {
+                        "description": "Описание продукта + название продукта не может превышать 860 символа, если присутствует фото."
+                    }
+                )
+        else:
+            # Если фото нет, ограничение 4096 символов
+            if desc_len > 3860:
+                raise ValidationError(
+                    {
+                        "description": "Описание продукта не может превышать 3860 символов, если нет фото."
+                    }
+                )
 
 
 class Cart(models.Model):

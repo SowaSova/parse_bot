@@ -1,10 +1,15 @@
+from django.core.exceptions import ValidationError
 from django.db import models
+from django.utils import timezone
 
 
 class Lottery(models.Model):
     title = models.CharField(max_length=255, verbose_name="Название розыгрыша")
     description = models.TextField(
         verbose_name="Описание розыгрыша", null=True, blank=True
+    )
+    photo = models.ImageField(
+        upload_to="lotteries/", verbose_name="Фото розыгрыша", null=True, blank=True
     )
     fin_date = models.DateTimeField(verbose_name="Время окончания розыгрыша")
     winner = models.ForeignKey(
@@ -32,3 +37,10 @@ class Lottery(models.Model):
 
     def __str__(self):
         return self.title
+
+    def clean(self):
+        super().clean()
+        if self.fin_date and self.fin_date <= timezone.now():
+            raise ValidationError(
+                {"fin_date": "Время окончания не может быть в прошлом."}
+            )

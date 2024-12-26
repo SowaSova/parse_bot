@@ -6,3 +6,6 @@ class BroadcastConfig(AppConfig):
     name = "apps.broadcast"
     verbose_name = "Рассылка"
     verbose_name_plural = "Рассылки"
+
+    def ready(self):
+        import apps.broadcast.signals  # noqa
