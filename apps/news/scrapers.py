@@ -126,15 +126,12 @@ def fetch_news_list_as_json(driver: Driver, url):
 
     # 2) Проверяем, есть ли кнопка "a.userInput"
     login_btn = driver.select("a.userInput", wait=Wait.SHORT)
-    if not login_btn:
-        # Значит, мы уже залогинены или сайт не требует логин.
-        return
-
-    # 3) Клик и вводим логин/пароль
-    driver.click("a.userInput", wait=Wait.SHORT)
-    driver.type("input[name='login']", username)
-    driver.type("input[name='password']", password)
-    driver.click("input[type='submit']", wait=Wait.SHORT)
+    if login_btn:
+        # 3) Клик и вводим логин/пароль
+        driver.click("a.userInput", wait=Wait.SHORT)
+        driver.type("input[name='login']", username)
+        driver.type("input[name='password']", password)
+        driver.click("input[type='submit']", wait=Wait.SHORT)
 
     # 4) Если сайт требует OTP
     code_input = driver.select("input[name='auth_email_code']", wait=Wait.SHORT)
