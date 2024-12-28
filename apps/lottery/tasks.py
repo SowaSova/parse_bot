@@ -1,7 +1,8 @@
 import logging
 import random
 
-from aiogram import Bot
+from aiogram import Bot, html
+from aiogram.enums import ParseMode
 from aiogram.types import FSInputFile, InlineKeyboardButton, InlineKeyboardMarkup
 from asgiref.sync import async_to_sync, sync_to_async
 from celery import shared_task
@@ -37,7 +38,7 @@ def announce_lottery(lottery_id):
         )
 
         caption_text = (
-            f"Новый розыгрыш!\n\n{lottery.title}\n\n{lottery.description or ''}\n"
+            f"{html.bold(lottery.title)}\n\n{lottery.description or ''}\n"
             f"Окончание: {lottery.fin_date.strftime('%d.%m.%Y %H:%M')}"
         )
 
@@ -48,12 +49,14 @@ def announce_lottery(lottery_id):
                 photo=photo,
                 caption=caption_text,
                 reply_markup=keyboard,
+                parse_mode=ParseMode.HTML,
             )
         else:
             await bot.send_message(
                 chat_id=channel_id,
                 text=caption_text,
                 reply_markup=keyboard,
+                parse_mode=ParseMode.HTML,
             )
 
         await bot.session.close()
@@ -88,14 +91,14 @@ async def finish_lottery_async(lottery_id):
     channel = await sync_to_async(NewsChannel.load)()
     channel_id = channel.tg_id
 
-    await bot.send_message(
-        chat_id=channel_id,
-        text=(
-            f"Розыгрыш «{lottery.title}» завершён!\n"
-            f"Победитель: {winner.full_name} | {winner.tg_username or winner.telegram_id}\n"
-            f"Поздравляем!"
-        ),
-    )
+    # await bot.send_message(
+    #     chat_id=channel_id,
+    #     text=(
+    #         f"Розыгрыш «{lottery.title}» завершён!\n"
+    #         f"Победитель: {winner.full_name} | {winner.tg_username or winner.telegram_id}\n"
+    #         f"Поздравляем!"
+    #     ),
+    # )
 
     await bot.send_message(
         chat_id=winner.telegram_id,
