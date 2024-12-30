@@ -70,7 +70,7 @@ async def start_handler(message: Message, state: UserData, user: TelegramUser):
             )
         else:
             # Если никакой розыгрыш не указан - просто приветствуем
-            await message.answer(
+            await message.edit_text(
                 "Привет и добро пожаловать!",
                 reply_markup=await kb.get_main_keyboard(),
             )
