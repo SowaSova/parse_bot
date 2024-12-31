@@ -20,7 +20,7 @@ logger = logging.getLogger(__name__)
 @router.message(CommandStart())
 async def start_handler(message: Message, state: UserData, user: TelegramUser):
     await state.clear()
-
+    await message.delete()
     # Пытаемся получить параметр lottery_id из стартового параметра
     # Формат ожидается такой: /start lottery_123
     # где 123 - id розыгрыша
