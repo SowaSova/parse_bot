@@ -49,7 +49,7 @@ async def start_handler(message: Message, state: UserData, user: TelegramUser):
 
         if lottery.is_finished or lottery.fin_date <= now():
             # Конкурс уже завершен или истёк
-            await message.edit_text(
+            await message.answer(
                 f"Извините, розыгрыш «{lottery.title}» уже завершился!",
                 reply_markup=await kb.get_main_keyboard(True),
             )
@@ -64,13 +64,13 @@ async def start_handler(message: Message, state: UserData, user: TelegramUser):
 
             # Формируем сообщение о том, что он участвует
             fin_dt = localtime(lottery.fin_date).strftime("%d.%m.%Y %H:%M")
-            await message.edit_text(
+            await message.answer(
                 f"Вы участвуете в розыгрыше «{lottery.title}»! Результаты будут объявлены {fin_dt}.",
                 reply_markup=await kb.get_main_keyboard(True),
             )
         else:
             # Если никакой розыгрыш не указан - просто приветствуем
-            await message.edit_text(
+            await message.answer(
                 "Привет и добро пожаловать!",
                 reply_markup=await kb.get_main_keyboard(),
             )
@@ -81,7 +81,7 @@ async def start_handler(message: Message, state: UserData, user: TelegramUser):
             await state.update_data(lottery_id=lottery_id)
 
         # Запускаем процесс регистрации
-        sent_msg = await message.edit_text(
+        sent_msg = await message.answer(
             "Привет и добро пожаловать!\nДавайте знакомиться, введите имя:"
         )
         await state.update_data(start_msg_id=sent_msg.message_id)
