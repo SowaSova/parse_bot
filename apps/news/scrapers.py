@@ -105,7 +105,7 @@ def login_cbonds(driver: Driver, data=None):
     cache=False,
     max_retry=5,  # Retry up to 5 times, which is a good default
     reuse_driver=True,  # Reuse the same driver for all tasks
-    output=None,
+    # output=None,
     close_on_crash=True,
     raise_exception=True,
     create_error_logs=False,
@@ -132,10 +132,12 @@ def fetch_news_list_as_json(driver: Driver, url):
         driver.type("input[name='login']", username)
         driver.type("input[name='password']", password)
         driver.click("input[type='submit']", wait=Wait.SHORT)
+        logger.info("Логинимся...")
 
     # 4) Если сайт требует OTP
     code_input = driver.select("input[name='auth_email_code']", wait=Wait.SHORT)
     if code_input:
+        logger.info("Вводим OTP...")
         if otp_code:
             driver.type("input[name='auth_email_code']", otp_code)
             driver.click("input[type='submit']", wait=Wait.SHORT)

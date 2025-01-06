@@ -9,6 +9,7 @@ from django.conf import settings
 from django.core.cache import cache
 from django.utils import timezone
 
+from apps.news.api_parse import parse_news_list_by_filters
 from apps.news.helpers import calculate_post_times
 from apps.news.scrapers import (
     fetch_full_news_html,
@@ -93,31 +94,50 @@ def post_scheduled_news_task():
 def parse_news_list():
     """
     Запускаем основную логику парсинга:
-      - Узнаём URL
-      - Получаем список новостей (JSON-список словарей) через Botasaurus
-      - Определяем, какие новости новые (id > last_sent_id)
-      - Сохраняем новые в PendingNews с запланированным временем выхода
-      - (Не отправляем сразу!)
+      - Если news_filter.is_url=True, берем url из кэша
+      - Иначе берём M2M-параметры (уже из кэша) и делаем POST-запрос к cbounds.ru
     """
+    news_filter = NewsFilter.load()
 
-    # 1. Берём URL из кэша/модели
-    url = cache.get("news_filter_url")
-    if not url:
-        news_filter = NewsFilter.load()
-        url = news_filter.url
-        cache.set("news_filter_url", url, None)
+    # 1) Если флаг is_url => парсим по ссылке
+    if news_filter:
+        url = cache.get("news_filter_url")  # берем из кэша
+        if not url:
+            # fallback, вдруг в кэше нет
+            url = news_filter.url
 
-    if not url:
-        logger.warning("Нет URL для парсинга новостей.")
-        return
+        if not url:
+            logger.warning("is_url=True, но нет URL. Остановка парсинга.")
+            return []
 
-    time.sleep(random.uniform(1, 4))
-    news_list = fetch_news_list_as_json(url)
-    if not news_list:
-        logger.warning("news_list пуст.")
-        return
+        # Делаем старый fetch
+        time.sleep(random.uniform(1, 3))
+        news_list = fetch_news_list_as_json(url)
+        if not news_list:
+            logger.warning("Сервер вернул пустой news_list при парсинге по URL.")
+            return []
+        return news_list
 
-    return news_list
+    # 2) Если is_url=False => POST к cbounds.ru с фильтрами (берем param_value из кэша)
+    else:
+        # Собираем списки из кэша (или проверяем fallback)
+        region_values = cache.get("news_filter_region_values") or []
+        country_values = cache.get("news_filter_country_values") or []
+        type_values = cache.get("news_filter_type_values") or []
+        theme_values = cache.get("news_filter_theme_values") or []
+
+        # Проверяем, что что-то вообще есть
+        if not (region_values or country_values or type_values or theme_values):
+            logger.warning("is_url=False, но нет ни одного фильтра в кэше.")
+            # Можно вернуть пустой список, чтобы парсинг не падал
+            return []
+
+        return parse_news_list_by_filters(
+            region_values=region_values,
+            country_values=country_values,
+            type_values=type_values,
+            theme_values=theme_values,
+        )
 
 
 async def send_news_to_channel(title, text):

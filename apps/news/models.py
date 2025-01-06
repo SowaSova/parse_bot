@@ -31,15 +31,20 @@ class NewsFilter(SingletonModel):
     """
 
     url = models.URLField(verbose_name="Ссылка на фильтр", null=True, blank=True)
-    region = models.ManyToManyField("news.Region", verbose_name="Регион", blank=True)
-    # language = models.ManyToManyField("news.Language", verbose_name="Язык", blank=True)
-    country = models.ManyToManyField("news.Country", verbose_name="Страна", blank=True)
-    news_type = models.ManyToManyField(
-        "news.NewsType", verbose_name="Тип новости", blank=True
-    )
-    news_theme = models.ManyToManyField(
-        "news.NewsTheme", verbose_name="Тема новости", blank=True
-    )
+    # is_url = models.BooleanField(
+    #     verbose_name="Фильтр по ссылке",
+    #     default=True,
+    #     help_text="Если выбрано, то новости будут фильтроваться по ссылке.",
+    # )
+    # region = models.ManyToManyField("news.Region", verbose_name="Регион", blank=True)
+    # # language = models.ManyToManyField("news.Language", verbose_name="Язык", blank=True)
+    # country = models.ManyToManyField("news.Country", verbose_name="Страна", blank=True)
+    # news_type = models.ManyToManyField(
+    #     "news.NewsType", verbose_name="Тип новости", blank=True
+    # )
+    # news_theme = models.ManyToManyField(
+    #     "news.NewsTheme", verbose_name="Тема новости", blank=True
+    # )
 
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания")
 

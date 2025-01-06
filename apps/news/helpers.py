@@ -3,9 +3,30 @@ import math
 import re
 from datetime import timedelta
 
+from django.core.cache import cache
+
+from apps.news.models import NewsFilter
 from config.constants import NEWS_INTERVAL
 
 logger = logging.getLogger(__name__)
+
+
+def cache_filter_m2m_fields(news_filter: NewsFilter):
+    """
+    Собирает param_value из регионов, стран и т.д. и складывает их в кэш.
+    """
+    region_values = list(news_filter.region.values_list("param_value", flat=True))
+    country_values = list(news_filter.country.values_list("param_value", flat=True))
+    news_type_values = list(news_filter.news_type.values_list("param_value", flat=True))
+    news_theme_values = list(
+        news_filter.news_theme.values_list("param_value", flat=True)
+    )
+
+    # Складываем в кэш
+    cache.set("news_filter_region_values", region_values, None)
+    cache.set("news_filter_country_values", country_values, None)
+    cache.set("news_filter_type_values", news_type_values, None)
+    cache.set("news_filter_theme_values", news_theme_values, None)
 
 
 def calculate_post_times(new_news, base_time, interval_minutes=NEWS_INTERVAL):
