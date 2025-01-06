@@ -16,12 +16,12 @@ app.autodiscover_tasks()
 from config.constants import NEWS_INTERVAL
 
 app.conf.beat_schedule = {
-    # "parse-news-every-hour": {
-    #     "task": "apps.news.tasks.parse_news_task",
-    #     "schedule": timedelta(minutes=NEWS_INTERVAL),  # каждый час
-    # },
-    # "post-scheduled-news-every-minute": {
-    #     "task": "apps.news.tasks.post_scheduled_news_task",
-    #     "schedule": timedelta(minutes=1),  # каждую минуту
-    # },
+    "parse-news-every-hour": {
+        "task": "apps.news.tasks.parse_news_task",
+        "schedule": timedelta(minutes=NEWS_INTERVAL),  # каждый час
+    },
+    "post-scheduled-news-every-minute": {
+        "task": "apps.news.tasks.post_scheduled_news_task",
+        "schedule": timedelta(minutes=1),  # каждую минуту
+    },
 }
