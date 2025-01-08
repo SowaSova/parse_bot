@@ -7,6 +7,17 @@ from utils import get_username
 from .validators import validate_tg_id
 
 
+class OTP(SingletonModel):
+    code = models.CharField(max_length=8, verbose_name="Код")
+
+    def __str__(self):
+        return str(self.code)
+
+    class Meta:
+        verbose_name = "OTP"
+        verbose_name_plural = "OTP"
+
+
 class PendingNews(models.Model):
     news_id = models.IntegerField(
         unique=True,

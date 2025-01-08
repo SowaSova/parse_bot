@@ -10,6 +10,7 @@ class TelegramUser(models.Model):
     tg_username = models.CharField(
         max_length=255, verbose_name="TG Username", null=True, blank=True
     )
+    is_admin = models.BooleanField(verbose_name="Админ?", default=False)
     full_name = models.CharField(max_length=255, verbose_name="Полное имя", null=True)
     phone_number = models.CharField(
         max_length=20, verbose_name="Номер телефона", null=True

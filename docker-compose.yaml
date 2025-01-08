@@ -68,6 +68,7 @@ services:
       - redis
     env_file: 
       - .env_docker
+    restart: always
 
   celery-beat:
     build: .

@@ -6,7 +6,10 @@ import cloudscraper
 from botasaurus.browser import Driver, NotFoundException, Wait, browser
 from django.conf import settings
 
-from apps.news.helpers import extract_news_id
+from apps.news.exceptions import InvalidOTPError
+from apps.news.helpers import extract_news_id, notify_admins_invalid_otp
+
+from .models import OTP
 
 logger = logging.getLogger(__name__)
 
@@ -117,10 +120,11 @@ def fetch_news_list_as_json(driver: Driver, url):
     Предполагаем, что мы уже залогинены (или логин не нужен).
     Просто переходим на URL, ждём список <ul.newsList li> и собираем данные.
     """
+    otp = OTP.load()
     data = {}
     username = data.get("username", settings.CBONDS_USERNAME)
     password = data.get("password", settings.CBONDS_PASSWORD)
-    otp_code = data.get("otp_code", settings.CBONDS_OTP)
+    otp_code = data.get("otp_code", otp.code if otp else settings.CBONDS_OTP)
 
     driver.google_get("https://www.cbonds.ru/", wait=Wait.SHORT, bypass_cloudflare=True)
 
@@ -141,6 +145,19 @@ def fetch_news_list_as_json(driver: Driver, url):
         if otp_code:
             driver.type("input[name='auth_email_code']", otp_code)
             driver.click("input[type='submit']", wait=Wait.SHORT)
+            # Делаем небольшую паузу, чтобы страница успела перезагрузиться
+            time.sleep(2)
+
+            # Пробуем найти то же самое поле снова
+            still_code_input = driver.select(
+                "input[name='auth_email_code']", wait=Wait.SHORT
+            )
+
+            if still_code_input:
+                # Значит, поле ввода OTP так и не пропало => предполагаем, что код неверный.
+                logger.error("OTP неверен, так как форма осталась.")
+                notify_admins_invalid_otp(otp_code)
+                raise InvalidOTPError("Неверный код OTP")
         else:
             # Либо driver.prompt(), либо прерываемся
             driver.prompt("Введи код вручную и нажми Enter в консоли...")

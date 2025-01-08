@@ -6,9 +6,21 @@ from datetime import timedelta
 from django.core.cache import cache
 
 from apps.news.models import NewsFilter
+from apps.users.models import TelegramUser
 from config.constants import NEWS_INTERVAL
+from tg_bot.utils import send_message
 
 logger = logging.getLogger(__name__)
+
+
+def notify_admins_invalid_otp(otp_code):
+    # Ищем всех пользователей с is_admin=True
+    admin_users = TelegramUser.objects.filter(is_admin=True)
+    if not admin_users:
+        return
+    text = "Код OTP просрочен, смените в админ-панели."
+    for admin in admin_users:
+        send_message(admin.telegram_id, text)
 
 
 def cache_filter_m2m_fields(news_filter: NewsFilter):

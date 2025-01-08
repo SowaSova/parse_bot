@@ -3,8 +3,16 @@ from django.db.models.signals import m2m_changed, post_save
 from django.dispatch import receiver
 
 from apps.news.helpers import cache_filter_m2m_fields
+from apps.news.tasks import parse_news_task
 
-from .models import NewsFilter
+from .models import OTP, NewsFilter
+
+
+@receiver(post_save, sender=OTP)
+def otp_updated(sender, instance, created, **kwargs):
+    # Если не при создании, а при обновлении
+    if not created:
+        parse_news_task.delay()
 
 
 @receiver(post_save, sender=NewsFilter)

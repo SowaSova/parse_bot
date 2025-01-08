@@ -5,11 +5,13 @@ import time
 from asgiref.sync import async_to_sync, sync_to_async
 from celery import shared_task
 from celery.signals import worker_ready
+from celery_once import QueueOnce
 from django.conf import settings
 from django.core.cache import cache
 from django.utils import timezone
 
 from apps.news.api_parse import parse_news_list_by_filters
+from apps.news.exceptions import InvalidOTPError
 from apps.news.helpers import calculate_post_times
 from apps.news.scrapers import (
     fetch_full_news_html,
@@ -18,6 +20,7 @@ from apps.news.scrapers import (
     parse_full_news,
 )
 from config.constants import NEWS_INTERVAL
+from tg_bot.utils import async_send_message
 
 from .models import NewsChannel, NewsFilter, PendingNews
 
@@ -112,11 +115,15 @@ def parse_news_list():
 
         # Делаем старый fetch
         time.sleep(random.uniform(1, 3))
-        news_list = fetch_news_list_as_json(url)
+        news_list = []
+        try:
+            news_list = fetch_news_list_as_json(url)
+        except InvalidOTPError:
+            logger.warning("Неверный OTP.")
+            return []
         if not news_list:
             logger.warning("Сервер вернул пустой news_list при парсинге по URL.")
             return []
-        return news_list
 
     # 2) Если is_url=False => POST к cbounds.ru с фильтрами (берем param_value из кэша)
     else:
@@ -148,8 +155,7 @@ async def send_news_to_channel(title, text):
 
     text = html_to_telegram_text(text)
     msg = f"{html.bold(title)}\n\n{text}"
-    bot = Bot(token=settings.BOT_TOKEN)
     channel = await sync_to_async(NewsChannel.load)()
     channel_id = channel.tg_id
-    await bot.send_message(chat_id=channel_id, text=msg, parse_mode=ParseMode.HTML)
+    await async_send_message(channel_id, msg)
     logging.info(f"Sent news to channel: {channel_id}")

@@ -25,6 +25,7 @@ django-redis = "^5.4.0"
 botasaurus = "^4.0.76"
 cloudscraper = "^1.2.71"
 daphne = "^4.1.2"
+celery-once = "^3.0.1"
 
 
 [build-system]

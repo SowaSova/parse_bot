@@ -30,7 +30,7 @@ WORKDIR /app
 COPY pyproject.toml poetry.lock ./
 
 RUN poetry config virtualenvs.create false \
-    && poetry install --no-dev --no-interaction --no-ansi
+    && poetry install --no-root --no-interaction --no-ansi
 
 FROM nikolaik/python-nodejs:python3.12-nodejs18-slim
 

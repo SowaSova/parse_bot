@@ -1,6 +1,17 @@
 from django.contrib import admin
 
-from .models import Country, NewsChannel, NewsFilter
+from .models import OTP, NewsChannel, NewsFilter
+
+
+@admin.register(OTP)
+class OTPAdmin(admin.ModelAdmin):
+    list_display = ["id", "code"]
+    list_editable = ["code"]
+
+    def has_add_permission(self, request):
+        if OTP.objects.count() > 0:
+            return False
+        return super().has_add_permission(request)
 
 
 @admin.register(NewsChannel)
