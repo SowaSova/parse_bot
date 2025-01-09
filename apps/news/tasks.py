@@ -118,6 +118,7 @@ def parse_news_list():
         news_list = []
         try:
             news_list = fetch_news_list_as_json(url)
+            return news_list
         except InvalidOTPError:
             logger.warning("Неверный OTP.")
             return []
