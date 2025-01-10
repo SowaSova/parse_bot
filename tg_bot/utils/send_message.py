@@ -28,7 +28,7 @@ async def async_send_message(
 
 
 def send_message(chat_id: int, text: str, photo_url=None):
-    async_to_sync(async_send_message(chat_id, text, photo_url=photo_url))
+    async_to_sync(awaitable=async_send_message(chat_id, text, photo_url=photo_url))
 
 
 def send_message_with_button(chat_id: int, text: str, button: dict, photo_url=None):
@@ -36,5 +36,7 @@ def send_message_with_button(chat_id: int, text: str, button: dict, photo_url=No
         inline_keyboard=[[InlineKeyboardButton(text=button["text"], url=button["url"])]]
     )
     async_to_sync(
-        async_send_message(chat_id, text, reply_markup=markup, photo_url=photo_url)
+        awaitable=async_send_message(
+            chat_id, text, reply_markup=markup, photo_url=photo_url
+        )
     )
