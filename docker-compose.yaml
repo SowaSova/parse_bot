@@ -4,7 +4,7 @@ services:
     command: daphne config.asgi:application -b 0.0.0.0 -p 8000 
     volumes:
       - ./media:/app/media
-
+      - ./output:/app/output
     ports:
       - "8001:8000"
     depends_on:
@@ -34,7 +34,9 @@ services:
       # - ./infra/certs/fullchain.pem:/etc/ssl/certs/fullchain.pem:ro
       # - ./infra/certs/privkey.pem:/etc/ssl/private/privkey.pem:ro
       # Если хотите раздавать статику/медиа напрямую Nginx-ом:
-      # - ./media:/app/media:ro
+      - ./media:/app/media:ro
+      - ./output:/app/output:ro
+      - ./static:/app/static:ro
     restart: always
     
   db:

@@ -122,9 +122,6 @@ def parse_news_list():
         except InvalidOTPError:
             logger.warning("Неверный OTP.")
             return []
-        if not news_list:
-            logger.warning("Сервер вернул пустой news_list при парсинге по URL.")
-            return []
 
     # 2) Если is_url=False => POST к cbounds.ru с фильтрами (берем param_value из кэша)
     else:
