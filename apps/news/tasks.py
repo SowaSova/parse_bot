@@ -20,7 +20,7 @@ from apps.news.scrapers import (
     parse_full_news,
 )
 from config.constants import NEWS_INTERVAL
-from tg_bot.utils import async_send_message, send_message
+from tg_bot.utils import async_send_message
 
 from .models import NewsChannel, NewsFilter, PendingNews
 
@@ -154,5 +154,6 @@ async def send_news_to_channel(title, text):
     msg = f"{html.bold(title)}\n\n{text}"
     channel = await sync_to_async(NewsChannel.load)()
     channel_id = channel.tg_id
-    send_message(channel_id, msg)
+    print(channel_id, msg)
+    await async_send_message(channel_id, msg)
     logging.info(f"Sent news to channel: {channel_id}")
