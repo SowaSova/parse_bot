@@ -5,6 +5,8 @@ services:
     volumes:
       - ./media:/app/media
       - ./output:/app/output
+      - ./static:/app/static
+
     ports:
       - "8001:8000"
     depends_on:
@@ -35,7 +37,6 @@ services:
       # - ./infra/certs/privkey.pem:/etc/ssl/private/privkey.pem:ro
       # Если хотите раздавать статику/медиа напрямую Nginx-ом:
       - ./media:/app/media:ro
-      - ./output:/app/output:ro
       - ./static:/app/static:ro
     restart: always
     
@@ -87,3 +88,5 @@ services:
 volumes:
   db:
   media:
+  output:
+  static:
