@@ -9,22 +9,21 @@ from django.conf import settings
 async def async_send_message(
     chat_id: int, text: str, reply_markup=None, photo_url=None
 ):
-    bot = Bot(token=settings.BOT_TOKEN)
-
-    if photo_url:
-        # Отправляем как фото с подписью
-        media = InputMediaPhoto(media=photo_url, caption=text)
-        await bot.send_photo(
-            chat_id,
-            photo_url,
-            caption=text,
-            reply_markup=reply_markup,
-            parse_mode=ParseMode.HTML,
-        )
-    else:
-        await bot.send_message(
-            chat_id, text, reply_markup=reply_markup, parse_mode=ParseMode.HTML
-        )
+    async with Bot(token=settings.BOT_TOKEN) as bot:
+        if photo_url:
+            # Отправляем как фото с подписью
+            media = InputMediaPhoto(media=photo_url, caption=text)
+            await bot.send_photo(
+                chat_id,
+                photo=media,
+                caption=text,
+                reply_markup=reply_markup,
+                parse_mode=ParseMode.HTML,
+            )
+        else:
+            await bot.send_message(
+                chat_id, text, reply_markup=reply_markup, parse_mode=ParseMode.HTML
+            )
 
 
 def send_message(chat_id: int, text: str):

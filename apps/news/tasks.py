@@ -77,19 +77,18 @@ def post_scheduled_news_task():
     from django.utils import timezone
 
     now = timezone.now()
-    qs = PendingNews.objects.filter(posted=False, post_time__lte=now)
+    qs = PendingNews.objects.filter(posted=False, post_time__lte=now).first()
     if qs:
-        for news in qs:
-            # достаём полный HTML и парсим
-            html = fetch_full_news_html(news.url)
-            full_text = parse_full_news(html)
+        # достаём полный HTML и парсим
+        html = fetch_full_news_html(qs.url)
+        full_text = parse_full_news(html)
 
-            # отправляем
-            async_to_sync(send_news_to_channel)(news.title, full_text)
+        # отправляем
+        async_to_sync(send_news_to_channel)(qs.title, full_text)
 
-            # помечаем как posted
-            news.posted = True
-            news.save()
+        # помечаем как posted
+        qs.posted = True
+        qs.save()
     else:
         logger.info("Нет новостей для отправки.")
 
