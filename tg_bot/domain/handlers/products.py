@@ -37,9 +37,10 @@ async def product_handler(
         return
     mkup = await kb.get_product_keyboard(callback_data.id)
     msg = f"<b>{product.title}</b>\n\n{product.description}"
-    await callback_query.message.delete()
+
     if product.image:
         photo = FSInputFile(product.image.path)
+        await callback_query.message.delete()
         await callback_query.message.answer_photo(photo, caption=msg, reply_markup=mkup)
     else:
         await callback_query.message.edit_text(msg, reply_markup=mkup)
