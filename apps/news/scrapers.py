@@ -60,48 +60,48 @@ def parse_full_news(html: str) -> str:
     return clipped_text
 
 
-@browser(
-    cache=True,
-    max_retry=5,  # Retry up to 5 times, which is a good default
-    reuse_driver=True,  # Reuse the same driver for all tasks
-    output=None,
-    block_images_and_css=True,
-    wait_for_complete_page_load=False,
-)
-def login_cbonds(driver: Driver, data=None):
-    """
-    Заходим на https://www.cbonds.ru, если есть кнопка "a.userInput" — логинимся.
-    Если её нет, просто выходим.
-    """
-    if not data:
-        data = {}
-    username = data.get("username", "Rzaev.G.Em@sberbank.ru")
-    password = data.get("password", "Kemal170718")
-    otp_code = data.get("otp_code", "7358")
+# @browser(
+#     cache=True,
+#     max_retry=5,  # Retry up to 5 times, which is a good default
+#     reuse_driver=True,  # Reuse the same driver for all tasks
+#     output=None,
+#     block_images_and_css=True,
+#     wait_for_complete_page_load=False,
+# )
+# def login_cbonds(driver: Driver, data=None):
+#     """
+#     Заходим на https://www.cbonds.ru, если есть кнопка "a.userInput" — логинимся.
+#     Если её нет, просто выходим.
+#     """
+#     if not data:
+#         data = {}
+#     username = data.get("username", "Rzaev.G.Em@sberbank.ru")
+#     password = data.get("password", "Kemal170718")
+#     otp_code = data.get("otp_code", "7358")
 
-    driver.get("https://www.cbonds.ru/", wait=Wait.SHORT, bypass_cloudflare=True)
+#     driver.get("https://www.cbonds.ru/", wait=Wait.SHORT, bypass_cloudflare=True)
 
-    # 2) Проверяем, есть ли кнопка "a.userInput"
-    login_btn = driver.select("a.userInput", wait=Wait.SHORT)
-    if not login_btn:
-        # Значит, мы уже залогинены или сайт не требует логин.
-        return
+#     # 2) Проверяем, есть ли кнопка "a.userInput"
+#     login_btn = driver.select("a.userInput", wait=Wait.SHORT)
+#     if not login_btn:
+#         # Значит, мы уже залогинены или сайт не требует логин.
+#         return
 
-    # 3) Клик и вводим логин/пароль
-    driver.click("a.userInput", wait=Wait.SHORT)
-    driver.type("input[name='login']", username)
-    driver.type("input[name='password']", password)
-    driver.click("input[type='submit']", wait=Wait.SHORT)
+#     # 3) Клик и вводим логин/пароль
+#     driver.click("a.userInput", wait=Wait.SHORT)
+#     driver.type("input[name='login']", username)
+#     driver.type("input[name='password']", password)
+#     driver.click("input[type='submit']", wait=Wait.SHORT)
 
-    # 4) Если сайт требует OTP
-    code_input = driver.select("input[name='auth_email_code']", wait=Wait.SHORT)
-    if code_input:
-        if otp_code:
-            driver.type("input[name='auth_email_code']", otp_code)
-            driver.click("input[type='submit']", wait=Wait.SHORT)
-        else:
-            # Либо driver.prompt(), либо прерываемся
-            driver.prompt("Введи код вручную и нажми Enter в консоли...")
+#     # 4) Если сайт требует OTP
+#     code_input = driver.select("input[name='auth_email_code']", wait=Wait.SHORT)
+#     if code_input:
+#         if otp_code:
+#             driver.type("input[name='auth_email_code']", otp_code)
+#             driver.click("input[type='submit']", wait=Wait.SHORT)
+#         else:
+#             # Либо driver.prompt(), либо прерываемся
+#             driver.prompt("Введи код вручную и нажми Enter в консоли...")
 
 
 @browser(
@@ -148,19 +148,16 @@ def fetch_news_list_as_json(driver: Driver, url):
             # Делаем небольшую паузу, чтобы страница успела перезагрузиться
             time.sleep(2)
 
-            # Пробуем найти то же самое поле снова
-            still_code_input = driver.select(
-                "input[name='auth_email_code']", wait=Wait.SHORT
-            )
+        # Пробуем найти то же самое поле снова
+        still_code_input = driver.select(
+            "input[name='auth_email_code']", wait=Wait.SHORT
+        )
 
-            if still_code_input:
-                # Значит, поле ввода OTP так и не пропало => предполагаем, что код неверный.
-                logger.error("OTP неверен, так как форма осталась.")
-                notify_admins_invalid_otp(otp_code)
-                raise InvalidOTPError("Неверный код OTP")
-        else:
-            # Либо driver.prompt(), либо прерываемся
-            driver.prompt("Введи код вручную и нажми Enter в консоли...")
+        if still_code_input:
+            # Значит, поле ввода OTP так и не пропало => предполагаем, что код неверный.
+            logger.error("OTP неверен, так как форма осталась.")
+            notify_admins_invalid_otp(otp_code)
+            raise InvalidOTPError("Неверный код OTP")
 
     driver.get(url, wait=Wait.SHORT, bypass_cloudflare=True)
 
