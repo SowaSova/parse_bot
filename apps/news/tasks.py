@@ -16,7 +16,7 @@ from apps.news.helpers import calculate_post_times
 from apps.news.scrapers import (
     fetch_full_news_html,
     fetch_news_list_as_json,
-    login_cbonds,
+    # login_cbonds,
     parse_full_news,
 )
 from config.constants import NEWS_INTERVAL
