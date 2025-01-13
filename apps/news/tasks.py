@@ -2,21 +2,17 @@ import logging
 import random
 import time
 
-from asgiref.sync import async_to_sync, sync_to_async
+from asgiref.sync import async_to_sync
 from celery import shared_task
 from celery.signals import worker_ready
-from celery_once import QueueOnce
-from django.conf import settings
 from django.core.cache import cache
 from django.utils import timezone
 
-from apps.news.api_parse import parse_news_list_by_filters
 from apps.news.exceptions import InvalidOTPError
 from apps.news.helpers import calculate_post_times
 from apps.news.scrapers import (
     fetch_full_news_html,
     fetch_news_list_as_json,
-    # login_cbonds,
     parse_full_news,
 )
 from config.constants import NEWS_INTERVAL
@@ -84,7 +80,7 @@ def post_scheduled_news_task():
         full_text = parse_full_news(html)
 
         # отправляем
-        async_to_sync(send_news_to_channel)(qs.title, full_text)
+        send_news_to_channel(qs.title, full_text)
 
         # помечаем как posted
         qs.posted = True
@@ -100,60 +96,37 @@ def parse_news_list():
       - Иначе берём M2M-параметры (уже из кэша) и делаем POST-запрос к cbounds.ru
     """
     news_filter = NewsFilter.load()
+    if not news_filter:
+        logger.warning("Нет фильтра. Остановка парсинга.")
+        return []
+    url = cache.get("news_filter_url")  # берем из кэша
+    if not url:
+        # fallback, вдруг в кэше нет
+        url = news_filter.url
 
-    # 1) Если флаг is_url => парсим по ссылке
-    if news_filter:
-        url = cache.get("news_filter_url")  # берем из кэша
-        if not url:
-            # fallback, вдруг в кэше нет
-            url = news_filter.url
+    if not url:
+        logger.warning("Нет URL. Остановка парсинга.")
+        return []
 
-        if not url:
-            logger.warning("is_url=True, но нет URL. Остановка парсинга.")
-            return []
-
-        # Делаем старый fetch
-        time.sleep(random.uniform(1, 3))
-        news_list = []
-        try:
-            news_list = fetch_news_list_as_json(url)
-            return news_list
-        except InvalidOTPError:
-            logger.warning("Неверный OTP.")
-            return []
-
-    # 2) Если is_url=False => POST к cbounds.ru с фильтрами (берем param_value из кэша)
-    else:
-        # Собираем списки из кэша (или проверяем fallback)
-        region_values = cache.get("news_filter_region_values") or []
-        country_values = cache.get("news_filter_country_values") or []
-        type_values = cache.get("news_filter_type_values") or []
-        theme_values = cache.get("news_filter_theme_values") or []
-
-        # Проверяем, что что-то вообще есть
-        if not (region_values or country_values or type_values or theme_values):
-            logger.warning("is_url=False, но нет ни одного фильтра в кэше.")
-            # Можно вернуть пустой список, чтобы парсинг не падал
-            return []
-
-        return parse_news_list_by_filters(
-            region_values=region_values,
-            country_values=country_values,
-            type_values=type_values,
-            theme_values=theme_values,
-        )
+    # Делаем старый fetch
+    time.sleep(random.uniform(1, 3))
+    news_list = []
+    try:
+        news_list = fetch_news_list_as_json(url)
+        return news_list
+    except InvalidOTPError:
+        logger.warning("Неверный OTP.")
+        return []
 
 
-async def send_news_to_channel(title, text):
-    from aiogram import Bot, html
-    from aiogram.enums import ParseMode
+def send_news_to_channel(title, text):
+    from aiogram import html
 
     from apps.news.helpers import html_to_telegram_text
 
     text = html_to_telegram_text(text)
     msg = f"{html.bold(title)}\n\n{text}"
-    channel = await sync_to_async(NewsChannel.load)()
+    channel = NewsChannel.load()
     channel_id = channel.tg_id
-    print(channel_id, msg)
-    await async_send_message(channel_id, msg)
+    async_to_sync(async_send_message)(channel_id, msg)
     logging.info(f"Sent news to channel: {channel_id}")

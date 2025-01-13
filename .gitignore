@@ -1,5 +1,7 @@
 media/
 logs/
+static/
+output/*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

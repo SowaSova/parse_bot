@@ -1,10 +1,12 @@
-import asyncio
+import logging
 
 from aiogram import Bot
 from aiogram.enums import ParseMode
 from aiogram.types import FSInputFile, InlineKeyboardButton, InlineKeyboardMarkup
 from asgiref.sync import async_to_sync, sync_to_async
 from django.conf import settings
+
+logger = logging.getLogger(__name__)
 
 
 async def async_send_message(
@@ -26,9 +28,11 @@ async def async_send_message(
                 chat_id, text, reply_markup=reply_markup, parse_mode=ParseMode.HTML
             )
 
+    logger.info(f"Sent message to {chat_id}")
+
 
 def send_message(chat_id: int, text: str, photo_url=None):
-    async_to_sync(async_send_message(chat_id, text, photo_url=photo_url))
+    async_to_sync(async_send_message)(chat_id, text, photo_url=photo_url)
 
 
 def send_message_with_button(chat_id: int, text: str, button: dict, photo_url=None):

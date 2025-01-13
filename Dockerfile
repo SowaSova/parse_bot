@@ -10,7 +10,7 @@ RUN apt-get update \
     lsof \ 
     apt-transport-https \
     ca-certificates \
-    x11-utils xdg-utils xvfb \
+    x11-utils xdg-utils xauth \
     software-properties-common \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
@@ -38,13 +38,13 @@ ENV PYTHONUNBUFFERED 1
 ENV PYTHONDONTWRITEBYTECODE 1
 
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends xvfb build-essential libpq-dev postgresql-client curl \
+    && apt-get install -y --no-install-recommends xvfb xauth build-essential libpq-dev postgresql-client curl \
     wget \
     gnupg2 \
     lsof \ 
     apt-transport-https \
     ca-certificates \
-    x11-utils xdg-utils xvfb \
+    x11-utils xdg-utils \
     software-properties-common \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
