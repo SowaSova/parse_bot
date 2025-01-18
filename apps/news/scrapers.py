@@ -169,30 +169,28 @@ def fetch_news_list_as_json(url: str):
             _human_delay()
 
             # Ждем появления ul.newsList li
-            # CDP Mode не имеет ровно таких же EC, как Selenium,
             # но можем проверить, есть ли элемент
-            found_news = False
-            for _ in range(30):
-                # 30 попыток (примерно ~30 секунд),
-                # each iteration ~1s sleep
-                sb.sleep(1)
-                try:
-                    sb.cdp.find_element("ul.newsList li")
-                    found_news = True
-                    break
-                except LinkTextNotFoundException:
-                    pass
-            if not found_news:
-                logger.error("Не дождались списка новостей (ul.newsList li).")
-                return []
+            # found_news = False
+            # for _ in range(30):
+            #     # 30 попыток (примерно ~30 секунд),
+            #     # each iteration ~1s sleep
+            #     sb.sleep(1)
+            #     try:
+            #         sb.cdp.find_element("ul.newsList li")
+            #         found_news = True
+            #         break
+            #     except LinkTextNotFoundException:
+            #         pass
+            # if not found_news:
+            #     logger.error("Не дождались списка новостей (ul.newsList li).")
+            #     return []
 
             # 6) Сохраняем HTML
-            page_source = sb.cdp.get_page_source()
-            with open("output/news.html", "w", encoding="utf-8") as f:
-                f.write(page_source)
+            # page_source = sb.cdp.get_page_source()
+            sb.cdp.save_screenshot("output/news_page.png")
 
             # 7) Ищем все элементы li
-            li_elements = sb.cdp.find_elements("ul.newsList li")
+            li_elements = sb.cdp.find_elements("ul.newsList li", timeout=20)
             for li_el in li_elements:
                 # Ищем заголовок
                 try:
