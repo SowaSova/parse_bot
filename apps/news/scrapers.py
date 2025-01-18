@@ -136,12 +136,10 @@ def fetch_news_list_as_json(url: str):
 
             # 4) Проверяем, не требуется ли сайт ввести OTP
             try:
-                source = sb.cdp.get_page_source()
-                sb.cdp.save_data_as(source, "output/page.html")
                 code_input = sb.cdp.find_element(
                     "input[name='auth_email_code']", timeout=10
                 )
-
+                logger.info("Поле для OTP найдено.")
                 if code_input:
                     logger.info("Сайт требует ввод OTP.")
                     if otp_code:
@@ -162,7 +160,10 @@ def fetch_news_list_as_json(url: str):
                     else:
                         logger.warning("OTP код не задан. Прерываемся.")
                         raise InvalidOTPError("Отсутствует OTP-код.")
-            except Exception:
+            except InvalidOTPError as e:
+                logger.error(e)
+                return []
+            except Exception as e:
                 logger.info("Поле для OTP не найдено. Идем дальше.")
 
             # 5) Открываем страницу с новостями
