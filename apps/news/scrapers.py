@@ -164,7 +164,7 @@ def fetch_news_list_as_json(url: str):
                 logger.error(e)
                 return []
             except Exception as e:
-                logger.info("Поле для OTP не найдено. Идем дальше.")
+                logger.info(f"Поле для OTP не найдено. {e}")
 
             # 5) Открываем страницу с новостями
             sb.cdp.get(url)
