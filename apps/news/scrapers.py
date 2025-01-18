@@ -189,8 +189,6 @@ def fetch_news_list_as_json(url: str):
             # 6) Сохраняем HTML
             # page_source = sb.cdp.get_page_source()
             sb.cdp.save_screenshot("output/news_page.png")
-            sb.cdp.save_html("output/news_page.html")
-
             # 7) Ищем все элементы li
             li_elements = sb.cdp.find_elements("ul.newsList li", timeout=20)
             for li_el in li_elements:
