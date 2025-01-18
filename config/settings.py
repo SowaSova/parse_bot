@@ -23,9 +23,14 @@ ALLOWED_HOSTS = [
     "localhost",
     "tight-wahoo-separately.ngrok-free.app",
     "147.45.185.78",
+    "213.171.8.116",
 ]
 
-CSRF_TRUSTED_ORIGINS = ["https://*.ngrok-free.app", "http://147.45.185.78"]
+CSRF_TRUSTED_ORIGINS = [
+    "https://*.ngrok-free.app",
+    "http://147.45.185.78",
+    "http://213.171.8.116",
+]
 
 INSTALLED_APPS = [
     "django.contrib.admin",
