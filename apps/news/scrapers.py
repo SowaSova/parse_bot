@@ -3,19 +3,8 @@ import random
 import time
 
 import cloudscraper
-import undetected_chromedriver as uc
 from django.conf import settings
-from fake_useragent import UserAgent
-from selenium import webdriver
-from selenium.common.exceptions import NoSuchElementException, TimeoutException
-from selenium.webdriver.chrome.options import Options as ChromeOptions
-from selenium.webdriver.common.by import By
-from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium_stealth import stealth
-from seleniumbase import SB, Driver
-from seleniumbase import config as sb_config  # при необходимости
+from seleniumbase import SB
 from seleniumbase.common.exceptions import LinkTextNotFoundException
 
 from apps.news.exceptions import InvalidOTPError
@@ -75,71 +64,6 @@ def parse_full_news(html: str) -> str:
 def _human_delay(minimum=1.0, maximum=2.0):
     """Небольшая случайная задержка для имитации «человекоподобных» действий."""
     time.sleep(random.uniform(minimum, maximum))
-
-
-def get_random_chrome_user_agent():
-    user_agent = UserAgent(browsers="chrome", os="windows", platforms="pc")
-    return user_agent.random
-
-
-def create_driver(user_id=1):
-    import os
-
-    import undetected_chromedriver as uc
-
-    options = uc.ChromeOptions()
-    options.add_argument("start-maximized")
-    options.add_experimental_option(
-        "prefs",
-        {
-            "credentials_enable_service": False,
-            "profile.password_manager_enabled": False,
-        },
-    )
-
-    script_dir = os.path.dirname(os.path.abspath(__file__))
-    base_directory = os.path.join(script_dir, "users")
-    user_directory = os.path.join(base_directory, f"user_{user_id}")
-
-    options.add_argument("--no-sandbox")
-    # options.add_argument(f"user-data-dir={user_directory}")
-    options.add_argument("--disable-gpu")
-    options.add_argument("--disable-dev-shm-usage")
-    options.add_argument("--disable-notifications")
-    options.add_argument("--disable-popup-blocking")
-    options.add_argument("--blink-settings=imagesEnabled=false")
-
-    options.add_argument("--headless=new")
-    options.add_argument("--incognito")
-
-    options.binary_location = "/usr/bin/google-chrome"
-    driver = uc.Chrome(
-        options=options, browser_executable_path="/usr/bin/google-chrome"
-    )
-    ua = get_random_chrome_user_agent()
-    stealth(
-        driver=driver,
-        user_agent=ua,
-        languages=["ru-RU", "ru"],
-        vendor="Google Inc.",
-        platform="Win32",
-        webgl_vendor="Intel Inc.",
-        renderer="Intel Iris OpenGL Engine",
-        fix_hairline=True,
-        run_on_insecure_origins=True,
-    )
-
-    driver.execute_cdp_cmd(
-        "Page.addScriptToEvaluateOnNewDocument",
-        {
-            "source": """
-            delete window.cdc_adoQpoasnfa76pfcZLmcfl_Array;
-            delete window.cdc_adoQpoasnfa76pfcZLmcfl_Promise;
-            delete window.cdc_adoQpoasnfa76pfcZLmcfl_Symbol;
-      """
-        },
-    )
-    return driver
 
 
 def fetch_news_list_as_json(url: str):

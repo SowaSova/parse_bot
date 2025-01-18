@@ -24,6 +24,13 @@ logger = logging.getLogger(__name__)
 
 
 @shared_task
+def remove_sended_news_task():
+    PendingNews.objects.filter(posted=True).delete()
+    logger.info("Удалены отправленные новости.")
+    return
+
+
+@shared_task
 @worker_ready.connect
 def parse_news_task(**kwargs):
     news_list = parse_news_list()

@@ -24,4 +24,8 @@ app.conf.beat_schedule = {
         "task": "apps.news.tasks.post_scheduled_news_task",
         "schedule": timedelta(minutes=1),  # каждую минуту
     },
+    "remove-sended-news-every-day": {
+        "task": "apps.news.tasks.remove_sended_news_task",
+        "schedule": timedelta(days=1),  # каждый день
+    },
 }
