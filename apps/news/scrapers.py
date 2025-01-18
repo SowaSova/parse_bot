@@ -136,7 +136,8 @@ def fetch_news_list_as_json(url: str):
 
             # 4) Проверяем, не требуется ли сайт ввести OTP
             try:
-                sb.cdp.save_screenshot("output/otp.png")
+                source = sb.cdp.get_page_source()
+                sb.cdp.save_data_as(source, "output/page.html")
                 code_input = sb.cdp.find_element(
                     "input[name='auth_email_code']", timeout=10
                 )
@@ -188,6 +189,7 @@ def fetch_news_list_as_json(url: str):
             # 6) Сохраняем HTML
             # page_source = sb.cdp.get_page_source()
             sb.cdp.save_screenshot("output/news_page.png")
+            sb.cdp.save_html("output/news_page.html")
 
             # 7) Ищем все элементы li
             li_elements = sb.cdp.find_elements("ul.newsList li", timeout=20)
