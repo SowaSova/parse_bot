@@ -17,7 +17,7 @@ class OTPAdmin(admin.ModelAdmin):
 @admin.register(NewsChannel)
 class NewsChannelAdmin(admin.ModelAdmin):
     list_display = ["id", "tg_username", "tg_id", "link"]
-    list_editable = ["tg_username", "tg_id", "link"]
+    list_editable = ["id", "tg_username", "tg_id", "link"]
 
     def has_add_permission(self, request):
         if NewsChannel.objects.count() > 0:
