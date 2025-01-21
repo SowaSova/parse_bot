@@ -18,6 +18,7 @@ class SingletonModel(models.Model):
             raise ValidationError(
                 "Экземпляр этой модели уже существует. Повторное создание запрещено."
             )
+        self.pk = 1
         super().save(*args, **kwargs)
 
     @classmethod
